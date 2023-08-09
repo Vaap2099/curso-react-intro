@@ -9,22 +9,21 @@ import {EmptyTodos} from '../EmptyTodos'
 import React from "react";
 
 function AppUI ({
-    loading,
-    error,
-    completedTodos,
-    totalTodos,
-    searchValue, 
-    setSearchValue,
-    searchedTodos,
-    completeTodo,
-    deleteTodo,
+    // loading,
+    // error,
+    // completedTodos,
+    // totalTodos,
+    // searchValue, 
+    // setSearchValue,
+    // searchedTodos,
+    // completeTodo,
+    // deleteTodo,
 
 }) {
     return (<>
-      <TodoCounter completed={completedTodos} total={totalTodos} />
+      <TodoCounter  />
       <TodoSearch 
-        searchValue={searchValue}
-        setSearchValue = {setSearchValue}
+        
       />
 
       <TodoList>
