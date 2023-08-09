@@ -6,25 +6,41 @@ const TodoContext = React.createContext();
 
 
 function TodoProvider () {
-    const {
-        item: todos,
+    const {item: todos, 
         saveItem: saveTodos,
         loading,
-        error,
-    } = useLocalStorage('TODOS_V1', []);
+        error,} = useLocalStorage('TODOS_V1', []);
+  const [searchValue, setSearchValue] = React.useState('');
 
-    const [searchValue, setSearchValue] = React.useState('');
+  const completedTodos = todos.filter(todo => !!todo.completed).length;
+  const totalTodos=todos.length;
 
-    const completedTodos = todos.filter(
-        todo => !!todo.completed        
-    ).lenght;
+  const searchedTodos = todos.filter((todo) => {
+    const todoText = todo.text.toLowerCase();
+    const searchText = searchValue.toLowerCase();
+    return todoText.includes(searchText);
+  }
+  );
 
-    const searchedTodos = todos.filter(
-        (todo)=> {
-            const todoText = todo.text.toLowerCase();
-            const searchText = searchValue.toLowerCase
-        }
-    )
+
+
+  const completeTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text === text
+    );
+    newTodos[todoIndex].completed = true;
+    saveTodos(newTodos);
+  }
+
+  const deleteTodo =(text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text === text
+    );
+    newTodos.splice(todoIndex, 1);
+    saveTodos(newTodos);
+  }
 
     return (
         <TodoContext.Provider>
