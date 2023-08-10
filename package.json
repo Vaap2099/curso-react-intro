@@ -31,7 +31,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "/programacion/curso-react-intro/build/",
+  "homepage": "https://vaap2099.github.io/curso-react-intro/",
   "devDependencies": {
     "gh-pages": "^5.0.0"
   }
